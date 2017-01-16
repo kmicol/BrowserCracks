@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var parser = require('ua-parser-js');
+var http = require('http')
+  , useragent = require('express-useragent');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
