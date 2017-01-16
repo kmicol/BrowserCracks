@@ -1,0 +1,48 @@
+
+<h1>Browser Cracks</h1>
+
+
+<p id="demo">Click the button to get your position.</p>
+<button onclick="getLocation()">Try It</button>
+<div id="mapholder"></div>
+
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+    +latlon+"&zoom=14&size=400x300&sensor=false";
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
+
+</script>
+
+
+
+
+
+
+
+<body>
+
+  <div id="map"></div>
+
+</body>
+
+
+
+
+<h2>Where have I been?</h2>
+<form action="/" method="POST">
+    <input type="hidden" name="latitude" value=""/>
+    <input type="hidden" name="longitude" value=""/>
+    <button type="submit" class="btn btn-primary btn-lg" disabled>Check In!</button>
+</form>
