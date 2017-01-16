@@ -22,8 +22,6 @@
 })();
 
 
-
-
 var map = L.map('map').setView([39.1309945, -77.0737036], 14);
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2V2aW5taWNvbCIsImEiOiJjaXh6bTZmNjMwMDdsMndyeWZocWszeGEzIn0.24V6es0V8o0uxJypeamoBg',
   {
@@ -48,3 +46,16 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{
       +latlon+"&zoom=14&size=400x300&sensor=false&marker=true";
       document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   }
+
+
+
+
+  http.createServer(function (req, res) {
+    // get user-agent header
+    var ua = parser(req.headers['user-agent']);
+    // write the result as response
+    res.end(JSON.stringify(ua, null, '  '));
+})
+.listen(1337, '127.0.0.1');
+
+console.log('Server running at http://127.0.0.1:1337/');
