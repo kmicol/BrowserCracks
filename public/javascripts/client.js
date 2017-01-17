@@ -22,13 +22,14 @@
 })();
 
 
-var map = L.map('map').setView([39.1309945, -77.0737036], 14);
-L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2V2aW5taWNvbCIsImEiOiJjaXh6bTZmNjMwMDdsMndyeWZocWszeGEzIn0.24V6es0V8o0uxJypeamoBg',
-  {
-    attribution: 'Kevin is the man',
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map);
+
+// var map = L.map('map').setView([39.1309945, -77.0737036], 14);
+// L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2V2aW5taWNvbCIsImEiOiJjaXh6bTZmNjMwMDdsMndyeWZocWszeGEzIn0.24V6es0V8o0uxJypeamoBg',
+//  {
+//    attribution: 'Kevin is the man',
+//    maxZoom: 17,
+//    minZoom: 9
+//  }).addTo(map);
 
 //this is googlemapsAPI
   var x = document.getElementById("demo");
@@ -44,5 +45,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{
 
       var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
       +latlon+"&zoom=14&size=400x300&sensor=false&marker=true";
-      document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+  }
+
+
+  function httpGet()
+  {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open( "GET", '/users', false ); // false for synchronous request
+      xmlHttp.send( null );
+      console.log(xmlHttp.responseText);
+      document.getElementById("userAgentInfo").innerHTML = "<div>"+xmlHttp.responseText+"</div>";
+      return xmlHttp.responseText;
+
   }
